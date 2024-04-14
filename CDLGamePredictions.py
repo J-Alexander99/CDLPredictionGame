@@ -1616,6 +1616,8 @@ def save_predictions_to_file():
 
 app = tk.Tk()
 app.title("Player Selection App")
+app.config(bg= '#1A1B1E')
+
 
 # CHRIS - This is for all the tkinker forms ------
 app_Width = 750
@@ -1623,18 +1625,51 @@ app_Height = 270
 app.minsize(app_Width, app_Height)
 screen_Width = app.winfo_screenwidth()
 screen_Height = app.winfo_screenheight()
-x = (screen_Width / 3) - (app_Width / 2)
-y = (screen_Height / 2) - (app_Height / 2)
+x = (screen_Width / 2) - (app_Width / 2)
+y = (screen_Height / 3) - (app_Height / 1)
 app.geometry(f'{app_Width}x{app_Height}+{int(x)}+{int(y)}')
 # -----------------------------------------------------------
 
+colour_fore = '#C1C2C5'
+colour_back = '#1A1B1E'
+colour_Puple = '#7b38ab'
+colour_black = '#000000'
 
 # Create a button widget to get players
-get_players_button = tk.Button(app, text="Get Players", command=get_players, width="40", height="5", font="40")
+get_players_button = tk.Button(app, 
+                               text="Get Players", 
+                               command=get_players, 
+                               width="35", 
+                               height="5", 
+                               font="35", 
+                               background=colour_fore,
+                               foreground=colour_black,
+                               activebackground=colour_Puple,
+                               activeforeground=colour_Puple,
+                               highlightthickness=2,
+                               highlightbackground=colour_Puple,
+                               highlightcolor='WHITE',
+                               border=20,
+                               cursor='hand2')
+get_players_button.grid(column=0, row=0)                              
 get_players_button.pack(pady=20)
 
 # Create a button widget to save predictions
-save_button = tk.Button(app, text="Save Predictions", command=save_predictions_to_file, width="40", height="5", font="40")
+save_button = tk.Button(app, 
+                        text="Save Predictions", 
+                        command=save_predictions_to_file, 
+                        width="20", 
+                        height="5", 
+                        font="30",
+                        background=colour_Puple,
+                        foreground=colour_black,
+                        activebackground=colour_Puple,
+                        activeforeground=colour_Puple,
+                        highlightthickness=2,
+                        highlightbackground=colour_Puple,
+                        highlightcolor='WHITE',
+                        border=10,
+                        cursor='hand2')
 save_button.pack()
 
 # Start the main event loop
