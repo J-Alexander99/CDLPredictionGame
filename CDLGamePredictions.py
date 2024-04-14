@@ -1,3 +1,6 @@
+# MAD = resume at line 485
+
+
 import tkinter as tk
 from tkinter import simpledialog, OptionMenu, messagebox
 import random
@@ -62,10 +65,21 @@ least_dmg_team_a_predictions = {}
 least_dmg_team_b_predictions = {}
 
 
+def misc():
+    global colour_fore, colour_back, colour_Puple, colour_black, app_Width, app_Height, custom_height_over, bg_colour_main
 
+    colour_fore = '#C1C2C5'
+    colour_back = '#1A1B1E'
+    colour_Puple = '#7b38ab'
+    colour_black = '#000000'
 
+    app_Width = 700
+    app_Height = 250
 
+     # need custom height for some 
+    custom_height_over = 400
 
+    bg_colour_main = '#1A1B1E'
 
 
 
@@ -93,12 +107,10 @@ def show_game_settings():
         spin_wheel()
 
     global game_settings_window
+     # This is for all the tkinker forms ------
     game_settings_window = tk.Toplevel(app)
-    game_settings_window.title("Game Settings")
-     # CHRIS - This is for all the tkinker forms ------
-    app_Width = 750
-    app_Height = 270
-    app.minsize(app_Width, app_Height)
+    game_settings_window.config(bg= bg_colour_main)
+    game_settings_window.minsize(app_Width, custom_height_over)
     screen_Width = app.winfo_screenwidth()
     screen_Height = app.winfo_screenheight()
     x = (screen_Width / 2) - (app_Width / 2)
@@ -108,8 +120,21 @@ def show_game_settings():
 
     teams = ["FaZe", "Ultra", "Breach", "Ravens", "Guerrillas", "Thieves", "Surge", "Optic", "Legion", "Heretics", "Rokkr", "Subliners"]
 
-    team_a_label = tk.Label(game_settings_window, text="Select Team A:", width="40", height="3", font="20")
-    team_a_label.pack()
+    team_a_label = tk.Label(game_settings_window, 
+                            text="Select Team A:", 
+                            width="20", 
+                            height="2", 
+                            font="8",
+                            background=colour_fore,
+                            foreground=colour_black,
+                            activebackground=colour_Puple,
+                            activeforeground=colour_Puple,
+                            highlightthickness=2,
+                            highlightbackground=colour_Puple,
+                            highlightcolor='WHITE',
+                            border=10,
+                            cursor='hand2')
+    team_a_label.pack(pady=10)
     global team_a_var
     team_a_var = tk.StringVar(game_settings_window)
     team_a_var.set(teams[0])
@@ -117,10 +142,23 @@ def show_game_settings():
     team_a_dropdown_submenu = game_settings_window.nametowidget(team_a_dropdown.menuname)
     team_a_dropdown.config(font=[15])
     team_a_dropdown_submenu.config(font=[30])
-    team_a_dropdown.pack()
+    team_a_dropdown.pack(pady=10)
 
-    team_b_label = tk.Label(game_settings_window, text="Select Team B:", width="40", height="3", font="20")
-    team_b_label.pack()
+    team_b_label = tk.Label(game_settings_window, 
+                            text="Select Team B:", 
+                            width="20", 
+                            height="2", 
+                            font="8",
+                            background=colour_fore,
+                            foreground=colour_black,
+                            activebackground=colour_Puple,
+                            activeforeground=colour_Puple,
+                            highlightthickness=2,
+                            highlightbackground=colour_Puple,
+                            highlightcolor='WHITE',
+                            border=10,
+                            cursor='hand2')
+    team_b_label.pack(pady=10)
     global team_b_var
     team_b_var = tk.StringVar(game_settings_window)
     team_b_var.set(teams[1])
@@ -128,10 +166,24 @@ def show_game_settings():
     team_b_dropdown_submenu = game_settings_window.nametowidget(team_b_dropdown.menuname)
     team_b_dropdown.config(font=[15])
     team_b_dropdown_submenu.config(font=[30])
-    team_b_dropdown.pack()
+    team_b_dropdown.pack(pady=10)
 
-    begin_game_button = tk.Button(game_settings_window, text="Begin Game", command=begin_game, width="20", height="2", font="20")
-    begin_game_button.pack()
+    begin_game_button = tk.Button(game_settings_window, 
+                                  text="Begin Game", 
+                                  command=begin_game, 
+                                  width="20", 
+                                  height="2", 
+                                  font="20",
+                                  background=colour_Puple,
+                                  foreground=colour_black,
+                                  activebackground=colour_Puple,
+                                  activeforeground=colour_Puple,
+                                  highlightthickness=2,
+                                  highlightbackground=colour_Puple,
+                                  highlightcolor='WHITE',
+                                  border=10,
+                                  cursor='hand2')
+    begin_game_button.pack(pady=10)
 
 def spin_wheel():
     if players:
@@ -145,10 +197,9 @@ def show_hardpoint_prediction():
   
     hardpoint_window = tk.Toplevel()
     hardpoint_window.title("Hardpoint Prediction")
-    # CHRIS - This is for all the tkinker forms ------
-    app_Width = 750
-    app_Height = 270
-    app.minsize(app_Width, app_Height)
+    hardpoint_window.config(bg= bg_colour_main)
+    # This is for all the tkinker forms ------
+    hardpoint_window.minsize(app_Width, custom_height_over)
     screen_Width = app.winfo_screenwidth()
     screen_Height = app.winfo_screenheight()
     x = (screen_Width / 2) - (app_Width / 2)
@@ -156,18 +207,49 @@ def show_hardpoint_prediction():
     hardpoint_window.geometry(f'{app_Width}x{app_Height}+{int(x)}+{int(y)}')
     # -----------------------------------------------------------
 
-    selected_player_label = tk.Label(hardpoint_window, text=f"{selected_player.name}, Please enter your prediction for the Hardpoint Result:")
-    selected_player_label.pack()
+    selected_player_label = tk.Label(hardpoint_window, text=f"{selected_player.name}, Please enter your prediction for the Hardpoint Result:",
+                                     width="60", 
+                                     height="3", 
+                                     font="8",
+                                     background=colour_fore,
+                                     foreground=colour_black,
+                                     activebackground=colour_Puple,
+                                     activeforeground=colour_Puple,
+                                     highlightthickness=2,
+                                     highlightbackground=colour_Puple,
+                                     highlightcolor='WHITE',
+                                     border=10,)
+    selected_player_label.pack(pady=10)
 
-    team_a_label = tk.Label(hardpoint_window, text=f"{team_a_var.get()}")
-    team_a_label.pack()
+    team_a_label = tk.Label(hardpoint_window, text=f"{team_a_var.get()}", 
+                            width="30",
+                            font="5", 
+                            background=colour_fore,
+                            foreground=colour_black,
+                            activebackground=colour_Puple,
+                            activeforeground=colour_Puple,
+                            highlightthickness=2,
+                            highlightbackground=colour_Puple,
+                            highlightcolor='WHITE',
+                            border=10,)
+    team_a_label.pack(pady=5)
     team_a_entry = tk.Entry(hardpoint_window)
-    team_a_entry.pack()
+    team_a_entry.pack(pady=20)
 
-    team_b_label = tk.Label(hardpoint_window, text=f"{team_b_var.get()}")
-    team_b_label.pack()
+    team_b_label = tk.Label(hardpoint_window, text=f"{team_b_var.get()}",
+                            width="30",
+                            font="5", 
+                            background=colour_fore,
+                            foreground=colour_black,
+                            activebackground=colour_Puple,
+                            activeforeground=colour_Puple,
+                            highlightthickness=2,
+                            highlightbackground=colour_Puple,
+                            highlightcolor='WHITE',
+                            border=10,                          )
+    team_b_label.pack(pady=5)
     team_b_entry = tk.Entry(hardpoint_window)
-    team_b_entry.pack()
+    team_b_entry.pack(pady=20)
 
     def save_prediction():
         team_a_prediction = team_a_entry.get()
@@ -183,8 +265,20 @@ def show_hardpoint_prediction():
             reset_player_ids()  # Reset player IDs for Search and Destroy predictions
             spin_wheel_snd()  # Proceed to Search and Destroy predictions
 
-    save_button = tk.Button(hardpoint_window, text="Decision Made", command=save_prediction)
-    save_button.pack()
+    save_button = tk.Button(hardpoint_window, text="Decision Made", command=save_prediction,
+                            width="20", 
+                            height="2", 
+                            font="15",
+                            background=colour_Puple,
+                            foreground=colour_black,
+                            activebackground=colour_Puple,
+                            activeforeground=colour_Puple,
+                            highlightthickness=2,
+                            highlightbackground=colour_Puple,
+                            highlightcolor='WHITE',
+                            border=5,
+                            cursor='hand2')
+    save_button.pack(pady=5)
 
 def reset_player_ids():
     global player_ids
@@ -201,10 +295,9 @@ def show_search_and_destroy_prediction():
 
     sad_window = tk.Toplevel(app)
     sad_window.title("Search and Destroy Prediction")
-     # CHRIS - This is for all the tkinker forms ------
-    app_Width = 750
-    app_Height = 270
-    app.minsize(app_Width, app_Height)
+    sad_window.config(bg= bg_colour_main)
+    #This is for all the tkinker forms ------
+    sad_window.minsize(app_Width, custom_height_over)
     screen_Width = app.winfo_screenwidth()
     screen_Height = app.winfo_screenheight()
     x = (screen_Width / 2) - (app_Width / 2)
@@ -212,18 +305,49 @@ def show_search_and_destroy_prediction():
     sad_window.geometry(f'{app_Width}x{app_Height}+{int(x)}+{int(y)}')
     # -----------------------------------------------------------
 
-    selected_player_label = tk.Label(sad_window, text=f"{selected_player.name}, Please enter your prediction for the Search and Destroy Result:")
-    selected_player_label.pack()
+    selected_player_label = tk.Label(sad_window, text=f"{selected_player.name}, Please enter your prediction for the Search and Destroy Result:",
+                                    width="60", 
+                                     height="3", 
+                                     font="8",
+                                     background=colour_fore,
+                                     foreground=colour_black,
+                                     activebackground=colour_Puple,
+                                     activeforeground=colour_Puple,
+                                     highlightthickness=2,
+                                     highlightbackground=colour_Puple,
+                                     highlightcolor='WHITE',
+                                     border=10,)
+    selected_player_label.pack(pady=10)
 
-    team_a_label = tk.Label(sad_window, text=f"Team A: {team_a_var.get()}")
-    team_a_label.pack()
+    team_a_label = tk.Label(sad_window, text=f"Team A: {team_a_var.get()}",
+                            width="30",
+                            font="5", 
+                            background=colour_fore,
+                            foreground=colour_black,
+                            activebackground=colour_Puple,
+                            activeforeground=colour_Puple,
+                            highlightthickness=2,
+                            highlightbackground=colour_Puple,
+                            highlightcolor='WHITE',
+                            border=10,)
+    team_a_label.pack(pady=5)
     team_a_entry = tk.Entry(sad_window)
-    team_a_entry.pack()
+    team_a_entry.pack(pady=20)
 
-    team_b_label = tk.Label(sad_window, text=f"Team B: {team_b_var.get()}")
-    team_b_label.pack()
+    team_b_label = tk.Label(sad_window, text=f"Team B: {team_b_var.get()}",
+                            width="30",
+                            font="5", 
+                            background=colour_fore,
+                            foreground=colour_black,
+                            activebackground=colour_Puple,
+                            activeforeground=colour_Puple,
+                            highlightthickness=2,
+                            highlightbackground=colour_Puple,
+                            highlightcolor='WHITE',
+                            border=10,)
+    team_b_label.pack(pady=5)
     team_b_entry = tk.Entry(sad_window)
-    team_b_entry.pack()
+    team_b_entry.pack(pady=20)
 
     def save_prediction():
         team_a_prediction = team_a_entry.get()
@@ -239,8 +363,20 @@ def show_search_and_destroy_prediction():
             reset_player_ids()  # Reset player IDs for Control predictions
             spin_wheel_control()  # Proceed to Control predictions
 
-    decision_made_button = tk.Button(sad_window, text="Decision Made", command=save_prediction)
-    decision_made_button.pack()
+    decision_made_button = tk.Button(sad_window, text="Decision Made", command=save_prediction,
+                                     width="20", 
+                                     height="2", 
+                                     font="15",
+                                     background=colour_Puple,
+                                     foreground=colour_black,
+                                     activebackground=colour_Puple,
+                                     activeforeground=colour_Puple,
+                                     highlightthickness=2,
+                                     highlightbackground=colour_Puple,
+                                     highlightcolor='WHITE',
+                                     border=5,
+                                     cursor='hand2')
+    decision_made_button.pack(pady=5)
 
 def spin_wheel_control():
     if players:
@@ -253,10 +389,9 @@ def show_control_prediction():
 
     control_window = tk.Toplevel(app)
     control_window.title("Control Prediction")
-     # CHRIS - This is for all the tkinker forms ------
-    app_Width = 750
-    app_Height = 270
-    app.minsize(app_Width, app_Height)
+    control_window.config(bg= bg_colour_main)
+     # This is for all the tkinker forms ------
+    control_window.minsize(app_Width, custom_height_over)
     screen_Width = app.winfo_screenwidth()
     screen_Height = app.winfo_screenheight()
     x = (screen_Width / 2) - (app_Width / 2)
@@ -264,18 +399,49 @@ def show_control_prediction():
     control_window.geometry(f'{app_Width}x{app_Height}+{int(x)}+{int(y)}')
     # -----------------------------------------------------------
 
-    selected_player_label = tk.Label(control_window, text=f"{selected_player.name}, Please enter your prediction for the Control Result:")
-    selected_player_label.pack()
+    selected_player_label = tk.Label(control_window, text=f"{selected_player.name}, Please enter your prediction for the Control Result:",
+                                     width="60", 
+                                     height="3", 
+                                     font="8",
+                                     background=colour_fore,
+                                     foreground=colour_black,
+                                     activebackground=colour_Puple,
+                                     activeforeground=colour_Puple,
+                                     highlightthickness=2,
+                                     highlightbackground=colour_Puple,
+                                     highlightcolor='WHITE',
+                                     border=10,)
+    selected_player_label.pack(pady=10)
 
-    team_a_label = tk.Label(control_window, text=f"Team A: {team_a_var.get()}")
-    team_a_label.pack()
+    team_a_label = tk.Label(control_window, text=f"Team A: {team_a_var.get()}",
+                            width="30",
+                            font="5", 
+                            background=colour_fore,
+                            foreground=colour_black,
+                            activebackground=colour_Puple,
+                            activeforeground=colour_Puple,
+                            highlightthickness=2,
+                            highlightbackground=colour_Puple,
+                            highlightcolor='WHITE',
+                            border=10,)
+    team_a_label.pack(pady=5)
     team_a_entry = tk.Entry(control_window)
-    team_a_entry.pack()
+    team_a_entry.pack(pady=20)
 
-    team_b_label = tk.Label(control_window, text=f"Team B: {team_b_var.get()}")
-    team_b_label.pack()
+    team_b_label = tk.Label(control_window, text=f"Team B: {team_b_var.get()}",
+                            width="30",
+                            font="5", 
+                            background=colour_fore,
+                            foreground=colour_black,
+                            activebackground=colour_Puple,
+                            activeforeground=colour_Puple,
+                            highlightthickness=2,
+                            highlightbackground=colour_Puple,
+                            highlightcolor='WHITE',
+                            border=10,)
+    team_b_label.pack(pady=5)
     team_b_entry = tk.Entry(control_window)
-    team_b_entry.pack()
+    team_b_entry.pack(pady=20)
 
     def save_prediction():
         team_a_prediction = team_a_entry.get()
@@ -291,8 +457,20 @@ def show_control_prediction():
             reset_player_ids()  # Reset player IDs for Most Kills predictions
             spin_wheel_most_kills_predictions()
 
-    decision_made_button = tk.Button(control_window, text="Decision Made", command=save_prediction)
-    decision_made_button.pack()
+    decision_made_button = tk.Button(control_window, text="Decision Made", command=save_prediction,
+                                     width="20", 
+                                     height="2", 
+                                     font="15",
+                                     background=colour_Puple,
+                                     foreground=colour_black,
+                                     activebackground=colour_Puple,
+                                     activeforeground=colour_Puple,
+                                     highlightthickness=2,
+                                     highlightbackground=colour_Puple,
+                                     highlightcolor='WHITE',
+                                     border=5,
+                                     cursor='hand2')
+    decision_made_button.pack(pady=5)
     
     
 def spin_wheel_most_kills_predictions():
@@ -304,11 +482,12 @@ def predict_most_kills():
     player_id = player_ids.pop(0)
     selected_player = players[player_id]
 
+# !!!resume here!!!
+
     most_kills_window = tk.Toplevel(app)
     most_kills_window.title("Most Kills Prediction")
-     # CHRIS - This is for all the tkinker forms ------
-    app_Width = 750
-    app_Height = 270
+    most_kills_window.config(bg= bg_colour_main)
+     # This is for all the tkinker forms ------
     app.minsize(app_Width, app_Height)
     screen_Width = app.winfo_screenwidth()
     screen_Height = app.winfo_screenheight()
@@ -356,9 +535,8 @@ def predict_least_kills():
 
     least_kills_window = tk.Toplevel(app)
     least_kills_window.title("Least Kills Prediction")
-     # CHRIS - This is for all the tkinker forms ------
-    app_Width = 750
-    app_Height = 270
+    least_kills_window.config(bg= bg_colour_main)
+     # This is for all the tkinker forms ------
     app.minsize(app_Width, app_Height)
     screen_Width = app.winfo_screenwidth()
     screen_Height = app.winfo_screenheight()
@@ -439,9 +617,8 @@ def predict_most_kills_team_a():
 
     most_kills_team_a_window = tk.Toplevel(app)
     most_kills_team_a_window.title("Most Kills on Team A Prediction")
-     # CHRIS - This is for all the tkinker forms ------
-    app_Width = 750
-    app_Height = 270
+    most_kills_team_a_window.config(bg= bg_colour_main)
+     # This is for all the tkinker forms ------
     app.minsize(app_Width, app_Height)
     screen_Width = app.winfo_screenwidth()
     screen_Height = app.winfo_screenheight()
@@ -483,9 +660,8 @@ def predict_most_kills_team_b():
 
     most_kills_team_b_window = tk.Toplevel(app)
     most_kills_team_b_window.title("Most Kills on Team B Prediction")
-     # CHRIS - This is for all the tkinker forms ------
-    app_Width = 750
-    app_Height = 270
+    most_kills_team_b_window.config(bg= bg_colour_main)
+     # This is for all the tkinker forms ------
     app.minsize(app_Width, app_Height)
     screen_Width = app.winfo_screenwidth()
     screen_Height = app.winfo_screenheight()
@@ -527,9 +703,8 @@ def predict_least_kills_team_a():
 
     least_kills_team_a_window = tk.Toplevel(app)
     least_kills_team_a_window.title("Least Kills on Team A Prediction")
-     # CHRIS - This is for all the tkinker forms ------
-    app_Width = 750
-    app_Height = 270
+    least_kills_team_a_window.config(bg= bg_colour_main)
+     # This is for all the tkinker forms ------
     app.minsize(app_Width, app_Height)
     screen_Width = app.winfo_screenwidth()
     screen_Height = app.winfo_screenheight()
@@ -570,9 +745,8 @@ def predict_least_kills_team_b():
 
     least_kills_team_b_window = tk.Toplevel(app)
     least_kills_team_b_window.title("Least Kills on Team B Prediction")
-     # CHRIS - This is for all the tkinker forms ------
-    app_Width = 750
-    app_Height = 270
+    least_kills_team_b_window.config(bg= bg_colour_main)
+     # This is for all the tkinker forms ------
     app.minsize(app_Width, app_Height)
     screen_Width = app.winfo_screenwidth()
     screen_Height = app.winfo_screenheight()
@@ -614,9 +788,8 @@ def predict_most_deaths_team_a():
 
     most_deaths_team_a_window = tk.Toplevel(app)
     most_deaths_team_a_window.title("Most Deaths on Team A Prediction")
-     # CHRIS - This is for all the tkinker forms ------
-    app_Width = 750
-    app_Height = 270
+    most_deaths_team_a_window.config(bg= bg_colour_main)
+     # This is for all the tkinker forms ------
     app.minsize(app_Width, app_Height)
     screen_Width = app.winfo_screenwidth()
     screen_Height = app.winfo_screenheight()
@@ -657,9 +830,8 @@ def predict_most_deaths_team_b():
 
     most_deaths_team_b_window = tk.Toplevel(app)
     most_deaths_team_b_window.title("Most Deaths on Team B Prediction")
-     # CHRIS - This is for all the tkinker forms ------
-    app_Width = 750
-    app_Height = 270
+    most_deaths_team_b_window.config(bg= bg_colour_main)
+     # This is for all the tkinker forms ------
     app.minsize(app_Width, app_Height)
     screen_Width = app.winfo_screenwidth()
     screen_Height = app.winfo_screenheight()
@@ -705,9 +877,8 @@ def predict_most_deaths_overall():
 
     most_deaths_window = tk.Toplevel(app)
     most_deaths_window.title("Most Deaths Prediction")
-     # CHRIS - This is for all the tkinker forms ------
-    app_Width = 750
-    app_Height = 270
+    most_deaths_window.config(bg= bg_colour_main)
+     # This is for all the tkinker forms ------
     app.minsize(app_Width, app_Height)
     screen_Width = app.winfo_screenwidth()
     screen_Height = app.winfo_screenheight()
@@ -751,9 +922,8 @@ def predict_least_deaths_team_a():
 
     least_deaths_team_a_window = tk.Toplevel(app)
     least_deaths_team_a_window.title("Least Deaths on Team A Prediction")
-     # CHRIS - This is for all the tkinker forms ------
-    app_Width = 750
-    app_Height = 270
+    least_deaths_team_a_window.config(bg= bg_colour_main)
+     # This is for all the tkinker forms ------
     app.minsize(app_Width, app_Height)
     screen_Width = app.winfo_screenwidth()
     screen_Height = app.winfo_screenheight()
@@ -794,9 +964,8 @@ def predict_least_deaths_team_b():
 
     least_deaths_team_b_window = tk.Toplevel(app)
     least_deaths_team_b_window.title("Least Deaths on Team B Prediction")
-     # CHRIS - This is for all the tkinker forms ------
-    app_Width = 750
-    app_Height = 270
+    least_deaths_team_b_window.config(bg= bg_colour_main)
+     # This is for all the tkinker forms ------
     app.minsize(app_Width, app_Height)
     screen_Width = app.winfo_screenwidth()
     screen_Height = app.winfo_screenheight()
@@ -843,9 +1012,8 @@ def predict_least_deaths_overall():
 
     least_deaths_window = tk.Toplevel(app)
     least_deaths_window.title("Least Deaths Prediction")
-     # CHRIS - This is for all the tkinker forms ------
-    app_Width = 750
-    app_Height = 270
+    least_deaths_window.config(bg= bg_colour_main)
+     # This is for all the tkinker forms ------
     app.minsize(app_Width, app_Height)
     screen_Width = app.winfo_screenwidth()
     screen_Height = app.winfo_screenheight()
@@ -890,9 +1058,8 @@ def predict_best_kd_team_a():
 
     best_kd_team_a_window = tk.Toplevel(app)
     best_kd_team_a_window.title("Best KD Ratio on Team A Prediction")
-     # CHRIS - This is for all the tkinker forms ------
-    app_Width = 750
-    app_Height = 270
+    best_kd_team_a_window.config(bg= bg_colour_main)
+     # This is for all the tkinker forms ------
     app.minsize(app_Width, app_Height)
     screen_Width = app.winfo_screenwidth()
     screen_Height = app.winfo_screenheight()
@@ -933,9 +1100,8 @@ def predict_best_kd_team_b():
 
     best_kd_team_b_window = tk.Toplevel(app)
     best_kd_team_b_window.title("Best KD Ratio on Team B Prediction")
-     # CHRIS - This is for all the tkinker forms ------
-    app_Width = 750
-    app_Height = 270
+    best_kd_team_b_window.config(bg= bg_colour_main)
+     # This is for all the tkinker forms ------
     app.minsize(app_Width, app_Height)
     screen_Width = app.winfo_screenwidth()
     screen_Height = app.winfo_screenheight()
@@ -982,9 +1148,8 @@ def predict_best_kd_overall():
 
     best_kd_window = tk.Toplevel(app)
     best_kd_window.title("Best KD Prediction")
-     # CHRIS - This is for all the tkinker forms ------
-    app_Width = 750
-    app_Height = 270
+    best_kd_window.config(bg= bg_colour_main)
+     # This is for all the tkinker forms ------
     app.minsize(app_Width, app_Height)
     screen_Width = app.winfo_screenwidth()
     screen_Height = app.winfo_screenheight()
@@ -1029,9 +1194,8 @@ def predict_worst_kd_team_a():
 
     worst_kd_team_a_window = tk.Toplevel(app)
     worst_kd_team_a_window.title("Worst KD Ratio on Team A Prediction")
-     # CHRIS - This is for all the tkinker forms ------
-    app_Width = 750
-    app_Height = 270
+    worst_kd_team_a_window.config(bg= bg_colour_main)
+     # This is for all the tkinker forms ------
     app.minsize(app_Width, app_Height)
     screen_Width = app.winfo_screenwidth()
     screen_Height = app.winfo_screenheight()
@@ -1073,9 +1237,8 @@ def predict_worst_kd_team_b():
 
     worst_kd_team_b_window = tk.Toplevel(app)
     worst_kd_team_b_window.title("Worst KD Ratio on Team B Prediction")
-     # CHRIS - This is for all the tkinker forms ------
-    app_Width = 750
-    app_Height = 270
+    worst_kd_team_b_window.config(bg= bg_colour_main)
+     # This is for all the tkinker forms ------
     app.minsize(app_Width, app_Height)
     screen_Width = app.winfo_screenwidth()
     screen_Height = app.winfo_screenheight()
@@ -1122,9 +1285,8 @@ def predict_worst_kd_overall():
 
     worst_kd_window = tk.Toplevel(app)
     worst_kd_window.title("Worst KD Prediction")
-     # CHRIS - This is for all the tkinker forms ------
-    app_Width = 750
-    app_Height = 270
+    worst_kd_window.config(bg= bg_colour_main)
+     # This is for all the tkinker forms ------
     app.minsize(app_Width, app_Height)
     screen_Width = app.winfo_screenwidth()
     screen_Height = app.winfo_screenheight()
@@ -1169,9 +1331,8 @@ def predict_most_dmg_team_a():
 
     most_dmg_team_a_window = tk.Toplevel(app)
     most_dmg_team_a_window.title("Most Damage on Team A Prediction")
-     # CHRIS - This is for all the tkinker forms ------
-    app_Width = 750
-    app_Height = 270
+    most_dmg_team_a_window.config(bg= bg_colour_main)
+     # This is for all the tkinker forms ------
     app.minsize(app_Width, app_Height)
     screen_Width = app.winfo_screenwidth()
     screen_Height = app.winfo_screenheight()
@@ -1212,9 +1373,8 @@ def predict_most_dmg_team_b():
 
     most_dmg_team_b_window = tk.Toplevel(app)
     most_dmg_team_b_window.title("Most Damage on Team B Prediction")
-     # CHRIS - This is for all the tkinker forms ------
-    app_Width = 750
-    app_Height = 270
+    most_dmg_team_b_window.config(bg= bg_colour_main)
+     # This is for all the tkinker forms ------
     app.minsize(app_Width, app_Height)
     screen_Width = app.winfo_screenwidth()
     screen_Height = app.winfo_screenheight()
@@ -1261,9 +1421,8 @@ def predict_most_dmg_overall():
 
     most_dmg_window = tk.Toplevel(app)
     most_dmg_window.title("Most Damage Prediction")
-     # CHRIS - This is for all the tkinker forms ------
-    app_Width = 750
-    app_Height = 270
+    most_dmg_window.config(bg= bg_colour_main)
+     # This is for all the tkinker forms ------
     app.minsize(app_Width, app_Height)
     screen_Width = app.winfo_screenwidth()
     screen_Height = app.winfo_screenheight()
@@ -1308,9 +1467,8 @@ def predict_least_dmg_team_a():
 
     least_dmg_team_a_window = tk.Toplevel(app)
     least_dmg_team_a_window.title("Least Damage on Team A Prediction")
-     # CHRIS - This is for all the tkinker forms ------
-    app_Width = 750
-    app_Height = 270
+    least_dmg_team_a_window.config(bg= bg_colour_main)
+     # This is for all the tkinker forms ------
     app.minsize(app_Width, app_Height)
     screen_Width = app.winfo_screenwidth()
     screen_Height = app.winfo_screenheight()
@@ -1351,9 +1509,8 @@ def predict_least_dmg_team_b():
 
     least_dmg_team_b_window = tk.Toplevel(app)
     least_dmg_team_b_window.title("Least Damage on Team B Prediction")
-     # CHRIS - This is for all the tkinker forms ------
-    app_Width = 750
-    app_Height = 270
+    least_dmg_team_b_window.config(bg= bg_colour_main)
+     # This is for all the tkinker forms ------
     app.minsize(app_Width, app_Height)
     screen_Width = app.winfo_screenwidth()
     screen_Height = app.winfo_screenheight()
@@ -1402,9 +1559,8 @@ def predict_least_dmg_overall():
     
     least_dmg_window = tk.Toplevel(app)
     least_dmg_window.title("Least Damage Prediction")
-     # CHRIS - This is for all the tkinker forms ------
-    app_Width = 750
-    app_Height = 270
+    least_dmg_window.config(bg= bg_colour_main)
+     # This is for all the tkinker forms ------
     app.minsize(app_Width, app_Height)
     screen_Width = app.winfo_screenwidth()
     screen_Height = app.winfo_screenheight()
@@ -1615,13 +1771,15 @@ def save_predictions_to_file():
 # CHRIS COMM - need to change app width and length as [app_Width = 750] and [app_Height = 270] .geometry(f'{app_Width}x{app_Height}) 
 
 app = tk.Tk()
+# loads some default misc items program found (line:65)
+misc()
 app.title("Player Selection App")
-app.config(bg= '#1A1B1E')
+app.config(bg= bg_colour_main)
 
 
-# CHRIS - This is for all the tkinker forms ------
-app_Width = 750
-app_Height = 270
+
+
+# This is for all the tkinker forms ------
 app.minsize(app_Width, app_Height)
 screen_Width = app.winfo_screenwidth()
 screen_Height = app.winfo_screenheight()
@@ -1629,11 +1787,6 @@ x = (screen_Width / 2) - (app_Width / 2)
 y = (screen_Height / 3) - (app_Height / 1)
 app.geometry(f'{app_Width}x{app_Height}+{int(x)}+{int(y)}')
 # -----------------------------------------------------------
-
-colour_fore = '#C1C2C5'
-colour_back = '#1A1B1E'
-colour_Puple = '#7b38ab'
-colour_black = '#000000'
 
 # Create a button widget to get players
 get_players_button = tk.Button(app, 
@@ -1652,14 +1805,14 @@ get_players_button = tk.Button(app,
                                border=20,
                                cursor='hand2')
 get_players_button.grid(column=0, row=0)                              
-get_players_button.pack(pady=20)
+get_players_button.pack(pady=10)
 
 # Create a button widget to save predictions
 save_button = tk.Button(app, 
                         text="Save Predictions", 
                         command=save_predictions_to_file, 
                         width="20", 
-                        height="5", 
+                        height="40", 
                         font="30",
                         background=colour_Puple,
                         foreground=colour_black,
@@ -1670,7 +1823,7 @@ save_button = tk.Button(app,
                         highlightcolor='WHITE',
                         border=10,
                         cursor='hand2')
-save_button.pack()
+save_button.pack(pady=10)
 
 # Start the main event loop
 app.mainloop()
