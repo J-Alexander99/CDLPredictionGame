@@ -4,27 +4,6 @@ def read_data(filename):
     with open(filename, 'r') as file:
         return file.readlines()
     
-
-
-
-
-
-
-    
-
-
-
-    
-
-
-
-
-
-
-
-
-
-
 def parse_tables(data, attribute='kills'):
     tables = {}
     current_table = None
@@ -381,8 +360,13 @@ def main():
                         elif predicting2:
                             resultData = line.split('-')[0].strip()
                             print(f"Hardpoint Score: {resultData}")
-                            if data == resultData:
-                                predictor_scores[predictor] += 1  # Update the predictor's score
+                            if resultData == 250:
+                                if data == resultData:
+                                    predictor_scores[predictor] += 1  # Update the predictor's score
+                            else:
+                                if abs(data - resultData) <= 10:
+                                    predictor_scores[predictor] += 1  # Update the predictor's score
+
                             
                             
                                     
@@ -415,8 +399,13 @@ def main():
                         elif predicting2:
                             resultData = line.split('-')[1].strip()
                             print(f"Hardpoint Score: {resultData}")
-                            if data == resultData:
-                                predictor_scores[predictor] += 1  # Update the predictor's score
+                            if resultData == 250:
+                                if data == resultData:
+                                    predictor_scores[predictor] += 1  # Update the predictor's score
+                            else:
+                                if abs(data - resultData) <= 10:
+                                    predictor_scores[predictor] += 1  # Update the predictor's score
+
                             
                             
     # Compare predictor guess to result and update score if they match
@@ -559,10 +548,5 @@ def main():
         print(f"{predictor}: {score}")         
         
         
-
 if __name__ == "__main__":
     main()
-    
-
-    
-  
