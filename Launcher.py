@@ -9,6 +9,7 @@ def run_third_file():
 
 def run_first_file():
     link = link_entry.get()
+    print("running ggScraper...")
     run_file_with_link("ggScraper.py", link)
 
 def run_second_file():
