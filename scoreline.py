@@ -46,8 +46,8 @@ for i, scoreline_group in enumerate(grouped_scorelines):
     file_content += "{}:\n{}\n".format(label, scoreline_group)
 
 # Get the absolute path of the directory where you want to save the file
-save_directory = "C:/Users/joela/Desktop/CDL Game/data"  # Replace this with your desired directory
-filename = os.path.join(save_directory, "scraped_scorelines.txt")
+save_directory = os.path.join(os.path.expanduser('~'), 'Desktop', 'CDLGame', 'data')
+filename = os.path.join(save_directory, 'scraped_scorelines.txt')
 
 # Save the extracted information to a text file
 try:
