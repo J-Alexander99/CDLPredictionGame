@@ -81,9 +81,10 @@ def scrape_website(url):
     # Get the absolute path of the current working directory
     current_directory = os.getcwd()
 
-    # Get the absolute path of the directory where you want to save the file
-    save_directory = "C:/Users/joela/Downloads/CDL Game-20240405T204723Z-001/CDL Game/data"  # Replace this with your desired directory
-
+   # Get the absolute path of the directory where you want to save the file
+    save_directory = os.path.join(os.path.expanduser('~'), 'Desktop', 'CDLGame', 'data')
+    filename = os.path.join(save_directory, 'scraped_data.txt')
+    
     # Save the printed data to a text file directly
     try:
         with open(os.path.join(save_directory, "scraped_data.txt"), "w") as file:
