@@ -1630,7 +1630,7 @@ def print_least_kills_overall_predictions():
         print(f"{player_name}: {member}")
 
 def save_predictions_to_file():
-    with open("C:\\Users\\joela\\Desktop\\CDL Game\\data\\predictions.txt", "w") as file:
+    with open("C:\\Users\\joela\\Desktop\\CDLGame\\data\\predictions.txt", "w") as file:
         if hardpoint_predictions:
             file.write("Hardpoint Predictions:\n")
             for player, prediction in hardpoint_predictions.items():
