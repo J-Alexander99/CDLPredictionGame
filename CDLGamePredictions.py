@@ -22,7 +22,7 @@ team_rosters = {
     "Thieves": ["JoeDeceives", "Ghosty", "Kremp", "Nastie"],
     "Surge": ["Abuzah", "04", "Breszy", "Huke"],
     "Optic": ["Dashy", "Kenny", "Pred", "Shotzzy"],
-    "Legion": ["Attach", "Gio", "Nero", "Purj"],
+    "Legion": ["Attach", "Gio", "Nero", "Asim"],
     "Heretics": ["ReeaL", "Lucky", "MettalZ", "Vikul"],
     "Rokkr": ["Accuracy", "Lyynnz", "Standy", "Gunless"],
     "Subliners": ["HyDra", "KiSMET", "Sib", "Skyz"]
