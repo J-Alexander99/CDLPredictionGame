@@ -61,6 +61,7 @@ This will be saved within a data folder, within a CDLGame folder in the desktop.
 
 Once the match is over it is time to get the results.
 Thanks to a recent update the rest of the program can be launched from the file named Launcher.py as seen below
+
 ![image](https://github.com/J-Alexander99/CDLPredictionGame/assets/148716418/f9e0f9b8-da70-4f81-b39e-9735087c18a8)
 
 This launcher allows you to access the rest of the programs from one location. To do so, simply enter the link to BreakingPointGG database for the match in particular into the entry field.
