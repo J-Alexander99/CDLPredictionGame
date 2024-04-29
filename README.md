@@ -1,6 +1,9 @@
 ## CDLPredictionGame
 This is a game for fans of the CDL to make predictions on a number of different categories. 
 
+#What Does it do?
+
+
 #How does it work?
 
 The process of the game is split up into two parts:
@@ -29,4 +32,42 @@ Notice how in this example Miami is on the Left and New York is on the RIght. Th
 
 ![image](https://github.com/J-Alexander99/CDLPredictionGame/assets/148716418/a1f70bd6-eccb-48d8-80b3-e96ba6be5896)
 
-Thanks to a recent update the rest of the program can be launched from the file named launcher.py as seen below
+
+For our example we will enter Miami as Team A and enter New York as Team B like so:
+![image](https://github.com/J-Alexander99/CDLPredictionGame/assets/148716418/338b1d36-a2f6-4a14-8efd-ec719eb48b44)
+
+Once this is complete, we move to the next step. From Here it is all just following the instructions on screen to make predictions until the windows close.
+
+The Hardpoint, Search and Destroy and Control predictions are simple. Just enter what you belive the final scoreline to be.
+![image](https://github.com/J-Alexander99/CDLPredictionGame/assets/148716418/b8664fdb-17d1-4653-9290-9c78aada11fd)
+
+Then comes the individual player predictions. Simply select the player from the drop down list for each category. 
+The categories include:
+Most Kills,
+Least Kills,
+Most Deaths,
+Least Deaths,
+Best K/D,
+Worst K/D,
+Most Damage,
+Least Damage
+![image](https://github.com/J-Alexander99/CDLPredictionGame/assets/148716418/79d087ac-5b8e-4113-beae-b40fb4dc5219)
+
+Once this is complete you will be returned to the main menu. with out predictions now made we simply click the "Save Predictions" button. This will save your predictions to a .txt file
+This will be saved within a data folder, within a CDLGame folder in the desktop. 
+*Please remember to move the predictions.txt file if you intend to predict multiple matches at the same time, otherwise the sedcond prediction will overwrite the first*
+
+#Getting the results
+
+Once the match is over it is time to get the results.
+Thanks to a recent update the rest of the program can be launched from the file named Launcher.py as seen below
+![image](https://github.com/J-Alexander99/CDLPredictionGame/assets/148716418/f9e0f9b8-da70-4f81-b39e-9735087c18a8)
+
+This launcher allows you to access the rest of the programs from one location. To do so, simply enter the link to BreakingPointGG database for the match in particular into the entry field.
+There are then three buttons as follow:
+-First accesses the website to gather the individual player stats
+-Second grabs the scoreline *this is why getting the team order is important*
+-Third will compare the predictions to the results and assign points to the players based on their predictions. *Click this one last*
+*Also please give the programs time to complete*
+
+
