@@ -2,7 +2,8 @@
 This is a game for fans of the CDL to make predictions on a number of different categories. 
 
 # What Does it do?
-
+This game allows any number of users to compete in a CDL prediction contest. Simply enter your predictions into the program and it will automatically make comparisons to the results.
+*I will try to make updates to the game and to keep the rosters accurate as it changes*
 
 # How does it work?
 
