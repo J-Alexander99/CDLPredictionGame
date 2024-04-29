@@ -1,16 +1,16 @@
 ## CDLPredictionGame
 This is a game for fans of the CDL to make predictions on a number of different categories. 
 
-#What Does it do?
+# What Does it do?
 
 
-#How does it work?
+# How does it work?
 
 The process of the game is split up into two parts:
 -Making the predictions
 -Getting the results
 
-#Making the Predictions
+# Making the Predictions
 To make the predictions you must first open the CDLGamePredictions.py 
 
 ![Image of the Predictor application HomePage](https://github.com/J-Alexander99/CDLPredictionGame/assets/148716418/e73627a6-7584-4681-9ba8-5a5929ee1da1)
@@ -57,7 +57,7 @@ Once this is complete you will be returned to the main menu. with out prediction
 This will be saved within a data folder, within a CDLGame folder in the desktop. 
 *Please remember to move the predictions.txt file if you intend to predict multiple matches at the same time, otherwise the sedcond prediction will overwrite the first*
 
-#Getting the results
+# Getting the results
 
 Once the match is over it is time to get the results.
 Thanks to a recent update the rest of the program can be launched from the file named Launcher.py as seen below
