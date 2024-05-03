@@ -18,7 +18,7 @@ team_rosters = {
     "Ultra": ["Scrap", "Envoy", "Insight", "CleanX"],
     "Breach": ["Beans", "Priestahh", "Pentagrxm", "Snoopy"],
     "Ravens": ["Clayster", "FelonY", "Gwinn", "TJHaLy"],
-    "Guerrillas": ["Assault", "Diamondcon", "Estreal", "Fame"],
+    "Guerrillas": ["Flames", "Diamondcon", "Estreal", "Fame"],
     "Thieves": ["JoeDeceives", "Ghosty", "Kremp", "Nastie"],
     "Surge": ["Abuzah", "04", "Breszy", "Huke"],
     "Optic": ["Dashy", "Kenny", "Pred", "Shotzzy"],
