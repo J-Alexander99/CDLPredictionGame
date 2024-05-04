@@ -24,8 +24,13 @@ def parse_tables(data, attribute='kills'):
                 elif attribute == 'kd':
                     value = float(player_data.split(",")[2].strip(" '[]"))  # Parse KD ratio
                 elif attribute == 'damage':
+                    cutoff = int(player_data.split(",")[4].strip(" '[]"))
                     # Concatenate 5th and 6th elements and parse as int for damage
-                    damage_str = player_data.split(",")[4].strip(" '[]") + player_data.split(",")[5].strip(" '[]")
+                    if cutoff > 20:
+                        damage_str = player_data.split(",")[4].strip(" '[]") #asim fix
+                        print(f" {player_name} with {damage_str} damage")  
+                    else:
+                        damage_str = player_data.split(",")[4].strip(" '[]") + player_data.split(",")[5].strip(" '[]")
                     value = int(damage_str)
                 tables[current_table].append((player_name, value))  # Append player and attribute
     return tables
@@ -45,7 +50,7 @@ def find_least(tables, attribute):
     return least
 
 def main():
-    filename = "C:\\Users\\joela\\Desktop\\CDL Game\\data\\scraped_data.txt"
+    filename = "C:\\Users\\joela\\Desktop\\CDLGame\\data\\scraped_data.txt"
     tables_data = read_data(filename)
     
        # Parse for kills, deaths, KD ratio, and damage separately
@@ -103,7 +108,7 @@ def main():
         print(f"{table_name} {player_name} with {damage} damage")
 
      # Read predictions
-    filename_predictions = "C:\\Users\\joela\\Desktop\\CDL Game\\data\\predictions.txt"
+    filename_predictions = "C:\\Users\\joela\\Desktop\\CDLGame\\data\\predictions.txt"
     with open(filename_predictions, 'r') as predictions_file:
         predictions_lines = predictions_file.readlines()
 
@@ -333,7 +338,7 @@ def main():
         
  #SCORE CALCULATIONS ------------------------------------------------------------
      # Read scraped_scoreline.txt
-    filename_scoreline = "C:\\Users\\joela\\Desktop\\CDL Game\\data\\scraped_scorelines.txt"
+    filename_scoreline = "C:\\Users\\joela\\Desktop\\CDLGame\\data\\scraped_scorelines.txt"
     with open(filename_scoreline, 'r') as scoreline_file:
         scoreline_data = scoreline_file.readlines()       
         
@@ -360,11 +365,13 @@ def main():
                         elif predicting2:
                             resultData = line.split('-')[0].strip()
                             print(f"Hardpoint Score: {resultData}")
+                            realdata = int(data)
+                            realResultData = int(resultData)
                             if resultData == 250:
-                                if data == resultData:
+                                if realdata == realResultData:
                                     predictor_scores[predictor] += 1  # Update the predictor's score
                             else:
-                                if abs(data - resultData) <= 10:
+                                if abs(realdata - realResultData) <= 10:
                                     predictor_scores[predictor] += 1  # Update the predictor's score
 
                             
@@ -399,11 +406,13 @@ def main():
                         elif predicting2:
                             resultData = line.split('-')[1].strip()
                             print(f"Hardpoint Score: {resultData}")
+                            realdata = int(data)
+                            realResultData = int(resultData)
                             if resultData == 250:
-                                if data == resultData:
+                                if realdata == realResultData:
                                     predictor_scores[predictor] += 1  # Update the predictor's score
                             else:
-                                if abs(data - resultData) <= 10:
+                                if abs(realdata - realResultData) <= 10:
                                     predictor_scores[predictor] += 1  # Update the predictor's score
 
                             
