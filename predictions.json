@@ -1,0 +1,156 @@
+{
+    "Hardpoint": [
+        {
+            "Player": "Chris",
+            "Prediction": "250-210"
+        },
+        {
+            "Player": "Alexander",
+            "Prediction": "250-170"
+        },
+        {
+            "Player": "Luke",
+            "Prediction": "250-184"
+        }
+    ],
+    "Search and Destroy": [
+        {
+            "Player": "Chris",
+            "Prediction": "6-4"
+        },
+        {
+            "Player": "Luke",
+            "Prediction": "6-2"
+        },
+        {
+            "Player": "Alexander",
+            "Prediction": "6-3"
+        }
+    ],
+    "Control": [
+        {
+            "Player": "Alexander",
+            "Prediction": "3-2"
+        },
+        {
+            "Player": "Luke",
+            "Prediction": "3-2"
+        },
+        {
+            "Player": "Chris",
+            "Prediction": "3-1"
+        }
+    ],
+    "Most Kills Overall": [
+        {
+            "Player": "Alexander",
+            "Prediction": "HyDra"
+        },
+        {
+            "Player": "Chris",
+            "Prediction": "Skyz"
+        },
+        {
+            "Player": "Luke",
+            "Prediction": "Attach"
+        }
+    ],
+    "Least Kills Overall": [
+        {
+            "Player": "Chris",
+            "Prediction": "Asim"
+        },
+        {
+            "Player": "Luke",
+            "Prediction": "Sib"
+        },
+        {
+            "Player": "Alexander",
+            "Prediction": "Gio"
+        }
+    ],
+    "Most Deaths Overall": [
+        {
+            "Player": "Alexander",
+            "Prediction": "Asim"
+        },
+        {
+            "Player": "Chris",
+            "Prediction": "Nero"
+        },
+        {
+            "Player": "Luke",
+            "Prediction": "Sib"
+        }
+    ],
+    "Least Deaths Overall": [
+        {
+            "Player": "Luke",
+            "Prediction": "HyDra"
+        },
+        {
+            "Player": "Alexander",
+            "Prediction": "Skyz"
+        },
+        {
+            "Player": "Chris",
+            "Prediction": "KiSMET"
+        }
+    ],
+    "Best KD Ratio Overall": [
+        {
+            "Player": "Luke",
+            "Prediction": "HyDra"
+        },
+        {
+            "Player": "Chris",
+            "Prediction": "Skyz"
+        },
+        {
+            "Player": "Alexander",
+            "Prediction": "Attach"
+        }
+    ],
+    "Worst KD Ratio Overall": [
+        {
+            "Player": "Chris",
+            "Prediction": "Asim"
+        },
+        {
+            "Player": "Alexander",
+            "Prediction": "Sib"
+        },
+        {
+            "Player": "Luke",
+            "Prediction": "Gio"
+        }
+    ],
+    "Most Damage Overall": [
+        {
+            "Player": "Luke",
+            "Prediction": "HyDra"
+        },
+        {
+            "Player": "Alexander",
+            "Prediction": "Skyz"
+        },
+        {
+            "Player": "Chris",
+            "Prediction": "KiSMET"
+        }
+    ],
+    "Least Damage Overall": [
+        {
+            "Player": "Alexander",
+            "Prediction": "Asim"
+        },
+        {
+            "Player": "Chris",
+            "Prediction": "Sib"
+        },
+        {
+            "Player": "Luke",
+            "Prediction": "Gio"
+        }
+    ]
+}

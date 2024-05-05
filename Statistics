@@ -1,0 +1,118 @@
+import json
+from collections import Counter
+
+# Read data from predictions.json
+with open('predictions.json', 'r') as file:
+    data = json.load(file)
+
+# Function to calculate the average prediction for a given category
+def calculate_average(category):
+    predictions = [prediction['Prediction'] for prediction in data[category]]
+    total = 0
+    count = 0
+    for prediction in predictions:
+        split_prediction = prediction.split('-')
+        if category == "Hardpoint" and int(split_prediction[0]) == 250:
+            total += int(split_prediction[1])
+        elif category == "Search and Destroy" and int(split_prediction[0]) == 6:
+            total += int(split_prediction[1])
+        elif category == "Control" and int(split_prediction[0]) == 3:
+            total += int(split_prediction[1])
+        else:
+            total += int(split_prediction[0])
+        count += 1
+    return total / count if count != 0 else 0
+
+# Function to find the player with the most predicted value for a given category
+def find_max_prediction(category):
+    predictions = data[category]
+    max_value = 0
+    max_player = ""
+    for prediction in predictions:
+        split_prediction = prediction['Prediction'].split('-')
+        if category == "Hardpoint" and int(split_prediction[0]) == 250:
+            if int(split_prediction[1]) > max_value:
+                max_value = int(split_prediction[1])
+                max_player = prediction['Player']
+        elif category == "Search and Destroy" and int(split_prediction[0]) == 6:
+            if int(split_prediction[1]) > max_value:
+                max_value = int(split_prediction[1])
+                max_player = prediction['Player']
+        elif category == "Control" and int(split_prediction[0]) == 3:
+            if int(split_prediction[1]) > max_value:
+                max_value = int(split_prediction[1])
+                max_player = prediction['Player']
+        else:
+            if int(split_prediction[0]) > max_value:
+                max_value = int(split_prediction[0])
+                max_player = prediction['Player']
+    return max_player, str(max_value) if max_value != 0 else "0"
+
+
+# Function to find the player with the least predicted value for a given category
+def find_min_prediction(category):
+    predictions = data[category]
+    min_value = float('inf')  # Set to a very large value initially
+    min_player = ""
+    for prediction in predictions:
+        split_prediction = prediction['Prediction'].split('-')
+        if category == "Hardpoint" and int(split_prediction[0]) == 250:
+            if int(split_prediction[1]) < min_value:
+                min_value = int(split_prediction[1])
+                min_player = prediction['Player']
+        elif category == "Search and Destroy" and int(split_prediction[0]) == 6:
+            if int(split_prediction[1]) < min_value:
+                min_value = int(split_prediction[1])
+                min_player = prediction['Player']
+        elif category == "Control" and int(split_prediction[0]) == 3:
+            if int(split_prediction[1]) < min_value:
+                min_value = int(split_prediction[1])
+                min_player = prediction['Player']
+        else:
+            if int(split_prediction[0]) < min_value:
+                min_value = int(split_prediction[0])
+                min_player = prediction['Player']
+    return min_player, str(min_value) if min_value != float('inf') else "0"
+
+
+# Print various statistics
+print("Hardpoint Statistics:")
+print("Average Predicted Score:", calculate_average('Hardpoint'))
+print("Player with Most Predicted Score:", *find_max_prediction('Hardpoint'))
+print("Player with Least Predicted Score:", *find_min_prediction('Hardpoint'))
+print()
+
+print("Search and Destroy Statistics:")
+print("Average Predicted Rounds Won:", calculate_average('Search and Destroy'))
+print("Player with Most Predicted Rounds Won:", *find_max_prediction('Search and Destroy'))
+print("Player with Least Predicted Rounds Won:", *find_min_prediction('Search and Destroy'))
+print()
+
+print("Control Statistics:")
+print("Average Predicted Rounds Won:", calculate_average('Control'))
+print("Player with Most Predicted Rounds Won:", *find_max_prediction('Control'))
+print("Player with Least Predicted Rounds Won:", *find_min_prediction('Control'))
+print()
+
+# Function to aggregate predictions made by all players except for scorelines
+def aggregate_player_predictions():
+    all_predictions = []
+    for category in data:
+        if category != "Hardpoint" and category != "Search and Destroy" and category != "Control":
+            for prediction in data[category]:
+                all_predictions.append(prediction['Prediction'])
+    return all_predictions
+
+# Aggregate all player predictions
+all_predictions = aggregate_player_predictions()
+
+# Count the occurrences of each prediction
+prediction_counts = Counter(all_predictions)
+
+# Sort the predictions by the number of times they were selected
+sorted_predictions = sorted(prediction_counts.items(), key=lambda x: x[1], reverse=True)
+
+# Print the ranked list of names with the number of times each name was selected
+print("Ranked List of Predictions with Selection Counts:")
+for prediction, count in sorted_predictions:
+    print(f"{prediction}: {count}")
