@@ -113,24 +113,27 @@ def main():
         predictions_lines = predictions_file.readlines()
 
   # Initialize variables for predictor scores
-    predictor_scores = {}
+    predictor_scores_maps = {}
+    predictor_scores_players = {}
+
     predicting = False
     for line in predictions_lines:
         if line.strip() == "Most Kills Overall Predictions:":
             predicting = True  # Start recording predictor scores
         elif predicting and ':' in line:
             predictor_name = line.split(':')[0].strip()
-            predictor_scores[predictor_name] = 0  # Initialize score to 0 for each predictor
+            predictor_scores_players[predictor_name] = 0  # Initialize score to 0 for each predictor
+            predictor_scores_maps[predictor_name] = 0  # Initialize score to 0 for each predictor
         elif predicting and not line.strip():  # Stop recording predictor scores if an empty line is encountered
             predicting = False
 
     # Print out the initialized predictor scores
     print("Initialized predictor scores:")
-    for predictor, score in predictor_scores.items():
+    for predictor, score in predictor_scores_players.items():
         print(f"{predictor}: {score}")
 
     # Find the first predictor in the list
-    first_predictor = list(predictor_scores.keys())[0]
+    first_predictor = list(predictor_scores_players.keys())[0]
 
     # Search for the Most Kills Overall Predictions section and print data for each predictor
     predicting = False
@@ -140,19 +143,19 @@ def main():
         elif line.strip() == "Least Kills Overall Predictions:":
             predicting = False  # Stop reading lines after reaching the next section
         elif predicting:
-            for predictor, score in predictor_scores.items():
+            for predictor, score in predictor_scores_players.items():
                 if predictor in line:
                     data = line.split(':')[1].strip()
                     print(f"Data for {predictor}: {data}")
                     # Compare predictor guess to result and update score if they match
                     for table_name, (player_name, kills) in most_kills.items():
                         if data == player_name:
-                            predictor_scores[predictor] += 1  # Update the predictor's score
+                            predictor_scores_players[predictor] += 1  # Update the predictor's score
                     break  # Stop after finding the predictor's data
 
     # Print out updated predictor scores
     print("\nUpdated predictor scores after Most Kills Predictions:")
-    for predictor, score in predictor_scores.items():
+    for predictor, score in predictor_scores_players.items():
         print(f"{predictor}: {score}")
     print("\n")    
 
@@ -165,19 +168,19 @@ def main():
         elif line.strip() == "Most Deaths Overall Predictions:":
             predicting = False  # Stop reading lines after reaching the next section
         elif predicting:
-            for predictor, score in predictor_scores.items():
+            for predictor, score in predictor_scores_players.items():
                 if predictor in line:
                     data = line.split(':')[1].strip()
                     print(f"Data for {predictor}: {data}")
                     # Compare predictor guess to result and update score if they match
                     for table_name, (player_name, kills) in least_kills.items():
                         if data == player_name:
-                            predictor_scores[predictor] += 1  # Update the predictor's score
+                            predictor_scores_players[predictor] += 1  # Update the predictor's score
                     break  # Stop after finding the predictor's data
 
     # Print out updated predictor scores
     print("\nUpdated predictor scores after Least Kills Predictions:")
-    for predictor, score in predictor_scores.items():
+    for predictor, score in predictor_scores_players.items():
         print(f"{predictor}: {score}")
     print("\n")    
 
@@ -190,19 +193,19 @@ def main():
         elif line.strip() == "Least Deaths Overall Predictions:":
             predicting = False  # Stop reading lines after reaching the next section
         elif predicting:
-            for predictor, score in predictor_scores.items():
+            for predictor, score in predictor_scores_players.items():
                 if predictor in line:
                     data = line.split(':')[1].strip()
                     print(f"Data for {predictor}: {data}")
                     # Compare predictor guess to result and update score if they match
                     for table_name, (player_name, kills) in most_deaths.items():
                         if data == player_name:
-                            predictor_scores[predictor] += 1  # Update the predictor's score
+                            predictor_scores_players[predictor] += 1  # Update the predictor's score
                     break  # Stop after finding the predictor's data
 
     # Print out updated predictor scores
     print("\nUpdated predictor scores after Most Deaths Predictions:")
-    for predictor, score in predictor_scores.items():
+    for predictor, score in predictor_scores_players.items():
         print(f"{predictor}: {score}")
     print("\n")    
 
@@ -216,19 +219,19 @@ def main():
         elif line.strip() == "Best KD Ratio Overall Predictions:":
             predicting = False  # Stop reading lines after reaching the next section
         elif predicting:
-            for predictor, score in predictor_scores.items():
+            for predictor, score in predictor_scores_players.items():
                 if predictor in line:
                     data = line.split(':')[1].strip()
                     print(f"Data for {predictor}: {data}")
                     # Compare predictor guess to result and update score if they match
                     for table_name, (player_name, kills) in least_deaths.items():
                         if data == player_name:
-                            predictor_scores[predictor] += 1  # Update the predictor's score
+                            predictor_scores_players[predictor] += 1  # Update the predictor's score
                     break  # Stop after finding the predictor's data
 
     # Print out updated predictor scores
     print("\nUpdated predictor scores after Least Deaths Predictions:")
-    for predictor, score in predictor_scores.items():
+    for predictor, score in predictor_scores_players.items():
         print(f"{predictor}: {score}")
     print("\n")    
 
@@ -242,19 +245,19 @@ def main():
         elif line.strip() == "Worst KD Ratio Overall Predictions:":
             predicting = False  # Stop reading lines after reaching the next section
         elif predicting:
-            for predictor, score in predictor_scores.items():
+            for predictor, score in predictor_scores_players.items():
                 if predictor in line:
                     data = line.split(':')[1].strip()
                     print(f"Data for {predictor}: {data}")
                     # Compare predictor guess to result and update score if they match
                     for table_name, (player_name, kills) in most_kd.items():
                         if data == player_name:
-                            predictor_scores[predictor] += 1  # Update the predictor's score
+                            predictor_scores_players[predictor] += 1  # Update the predictor's score
                     break  # Stop after finding the predictor's data
 
     # Print out updated predictor scores
     print("\nUpdated predictor scores after Best KD Ratio Predictions:")
-    for predictor, score in predictor_scores.items():
+    for predictor, score in predictor_scores_players.items():
         print(f"{predictor}: {score}")
     print("\n")    
 
@@ -267,19 +270,19 @@ def main():
         elif line.strip() == "Most Damage Overall Predictions:":
             predicting = False  # Stop reading lines after reaching the next section
         elif predicting:
-            for predictor, score in predictor_scores.items():
+            for predictor, score in predictor_scores_players.items():
                 if predictor in line:
                     data = line.split(':')[1].strip()
                     print(f"Data for {predictor}: {data}")
                     # Compare predictor guess to result and update score if they match
                     for table_name, (player_name, kills) in least_kd.items():
                         if data == player_name:
-                            predictor_scores[predictor] += 1  # Update the predictor's score
+                            predictor_scores_players[predictor] += 1  # Update the predictor's score
                     break  # Stop after finding the predictor's data
 
     # Print out updated predictor scores
     print("\nUpdated predictor scores after Worst KD Ratio Predictions:")
-    for predictor, score in predictor_scores.items():
+    for predictor, score in predictor_scores_players.items():
         print(f"{predictor}: {score}")
     print("\n")    
 
@@ -293,19 +296,19 @@ def main():
         elif line.strip() == "Least Damage Overall Predictions:":
             predicting = False  # Stop reading lines after reaching the next section
         elif predicting:
-            for predictor, score in predictor_scores.items():
+            for predictor, score in predictor_scores_players.items():
                 if predictor in line:
                     data = line.split(':')[1].strip()
                     print(f"Data for {predictor}: {data}")
                     # Compare predictor guess to result and update score if they match
                     for table_name, (player_name, kills) in most_damage.items():
                         if data == player_name:
-                            predictor_scores[predictor] += 1  # Update the predictor's score
+                            predictor_scores_players[predictor] += 1  # Update the predictor's score
                     break  # Stop after finding the predictor's data
 
     # Print out updated predictor scores
     print("\nUpdated predictor scores after Most Damage Predictions:")
-    for predictor, score in predictor_scores.items():
+    for predictor, score in predictor_scores_players.items():
         print(f"{predictor}: {score}")
     print("\n")    
 
@@ -319,19 +322,19 @@ def main():
         elif line.strip() == "":
             predicting = False  # Stop reading lines after reaching the next section
         elif predicting:
-            for predictor, score in predictor_scores.items():
+            for predictor, score in predictor_scores_players.items():
                 if predictor in line:
                     data = line.split(':')[1].strip()
                     print(f"Data for {predictor}: {data}")
                     # Compare predictor guess to result and update score if they match
                     for table_name, (player_name, kills) in least_damage.items():
                         if data == player_name:
-                            predictor_scores[predictor] += 1  # Update the predictor's score
+                            predictor_scores_players[predictor] += 1  # Update the predictor's score
                     break  # Stop after finding the predictor's data
 
     # Print out updated predictor scores
     print("\nUpdated predictor scores after Least Damage Predictions:")
-    for predictor, score in predictor_scores.items():
+    for predictor, score in predictor_scores_players.items():
         print(f"{predictor}: {score}")
     print("\n")    
 
@@ -350,7 +353,7 @@ def main():
         elif line.strip() == "Search and Destroy Predictions:":
             predicting = False  # Stop reading lines after reaching the next section
         elif predicting:
-            for predictor, score in predictor_scores.items():
+            for predictor, score in predictor_scores_maps.items():
                 if predictor in line:
                     temp = line.split(':')[1].strip()
                     data = temp.split('-')[0].strip()
@@ -369,16 +372,16 @@ def main():
                             realResultData = int(resultData)
                             if resultData == 250:
                                 if realdata == realResultData:
-                                    predictor_scores[predictor] += 1  # Update the predictor's score
+                                    predictor_scores_maps[predictor] += 1  # Update the predictor's score
                             else:
                                 if abs(realdata - realResultData) <= 10:
-                                    predictor_scores[predictor] += 1  # Update the predictor's score
+                                    predictor_scores_maps[predictor] += 1  # Update the predictor's score
 
                             
                             
                                     
     print("\nUpdated predictor scores after Hardpoint Part 1:")
-    for predictor, score in predictor_scores.items():
+    for predictor, score in predictor_scores_maps.items():
         print(f"{predictor}: {score}") 
     print("\n")    
    
@@ -391,7 +394,7 @@ def main():
         elif line.strip() == "Search and Destroy Predictions:":
             predicting = False  # Stop reading lines after reaching the next section
         elif predicting:
-            for predictor, score in predictor_scores.items():
+            for predictor, score in predictor_scores_maps.items():
                 if predictor in line:
                     temp = line.split(':')[1].strip()
                     data = temp.split('-')[1].strip()
@@ -410,16 +413,16 @@ def main():
                             realResultData = int(resultData)
                             if resultData == 250:
                                 if realdata == realResultData:
-                                    predictor_scores[predictor] += 1  # Update the predictor's score
+                                    predictor_scores_maps[predictor] += 1  # Update the predictor's score
                             else:
                                 if abs(realdata - realResultData) <= 10:
-                                    predictor_scores[predictor] += 1  # Update the predictor's score
+                                    predictor_scores_maps[predictor] += 1  # Update the predictor's score
 
                             
                             
     # Compare predictor guess to result and update score if they match
     print("\nUpdated predictor scores after Hardpoint Part 2:")
-    for predictor, score in predictor_scores.items():
+    for predictor, score in predictor_scores_maps.items():
         print(f"{predictor}: {score}")
     print("\n")    
     
@@ -432,7 +435,7 @@ def main():
         elif line.strip() == "Control Predictions:":
             predicting = False  # Stop reading lines after reaching the next section
         elif predicting:
-            for predictor, score in predictor_scores.items():
+            for predictor, score in predictor_scores_maps.items():
                 if predictor in line:
                     temp = line.split(':')[1].strip()
                     data = temp.split('-')[0].strip()
@@ -448,12 +451,12 @@ def main():
                             resultData = line.split('-')[0].strip()
                             print(f"Search and Destroy Score: {resultData}")
                             if data == resultData:
-                                predictor_scores[predictor] += 1  # Update the predictor's score
+                                predictor_scores_maps[predictor] += 1  # Update the predictor's score
                             
                             
                                     # Compare predictor guess to result and update score if they match
     print("\nUpdated predictor scores after SnD Part 1:")
-    for predictor, score in predictor_scores.items():
+    for predictor, score in predictor_scores_maps.items():
         print(f"{predictor}: {score}")
     print("\n")    
     
@@ -466,7 +469,7 @@ def main():
         elif line.strip() == "Control Predictions:":
             predicting = False  # Stop reading lines after reaching the next section
         elif predicting:
-            for predictor, score in predictor_scores.items():
+            for predictor, score in predictor_scores_maps.items():
                 if predictor in line:
                     temp = line.split(':')[1].strip()
                     data = temp.split('-')[1].strip()
@@ -482,12 +485,12 @@ def main():
                             resultData = line.split('-')[1].strip()
                             print(f"Search and Destroy Score: {resultData}")
                             if data == resultData:
-                                predictor_scores[predictor] += 1  # Update the predictor's score
+                                predictor_scores_maps[predictor] += 1  # Update the predictor's score
                             
                             
     # Compare predictor guess to result and update score if they match
     print("\nUpdated predictor scores after SnD Part 2:")
-    for predictor, score in predictor_scores.items():
+    for predictor, score in predictor_scores_maps.items():
         print(f"{predictor}: {score}") 
     print("\n")    
        
@@ -500,7 +503,7 @@ def main():
         elif line.strip() == "Most Kills Overall Predictions:":
             predicting = False  # Stop reading lines after reaching the next section
         elif predicting:
-            for predictor, score in predictor_scores.items():
+            for predictor, score in predictor_scores_maps.items():
                 if predictor in line:
                     temp = line.split(':')[1].strip()
                     data = temp.split('-')[0].strip()
@@ -516,12 +519,12 @@ def main():
                             resultData = line.split('-')[0].strip()
                             print(f"Control Score: {resultData}")
                             if data == resultData:
-                                predictor_scores[predictor] += 1  # Update the predictor's score
+                                predictor_scores_maps[predictor] += 1  # Update the predictor's score
                             
                             
                                     # Compare predictor guess to result and update score if they match
     print("\nUpdated predictor scores after Control Part 1:")
-    for predictor, score in predictor_scores.items():
+    for predictor, score in predictor_scores_maps.items():
         print(f"{predictor}: {score}")    
     print("\n")    
      #Search for the team B Control Scoreline
@@ -532,7 +535,7 @@ def main():
         elif line.strip() == "Most Kills Overall Predictions:":
             predicting = False  # Stop reading lines after reaching the next section
         elif predicting:
-            for predictor, score in predictor_scores.items():
+            for predictor, score in predictor_scores_maps.items():
                 if predictor in line:
                     temp = line.split(':')[1].strip()
                     data = temp.split('-')[1].strip()
@@ -542,19 +545,23 @@ def main():
                     for line in scoreline_data:
                         if line.strip() == "Control:":
                             predicting2 = True
-                        elif line.strip() == "":
+                        elif line.strip() == "Hardpoint:":
                             predicting2 = False  # Stop reading lines after reaching the next section
                         elif predicting2:
                             resultData = line.split('-')[1].strip()
                             print(f"Control Score: {resultData}")
                             if data == resultData:
-                                predictor_scores[predictor] += 1  # Update the predictor's score
+                                predictor_scores_maps[predictor] += 1  # Update the predictor's score
                             
                             
     # Compare predictor guess to result and update score if they match
     print("\nFinal Scores:")
-    for predictor, score in predictor_scores.items():
-        print(f"{predictor}: {score}")         
+    print("\nMaps Scores: ")
+    for predictor, score in predictor_scores_maps.items():
+        print(f"{predictor}: {score}")        
+    print("\nPlayer Scores: ")
+    for predictor, score in predictor_scores_players.items():
+        print(f"{predictor}: {score}")   
         
         
 if __name__ == "__main__":
