@@ -32,20 +32,25 @@ def scrape_website(url):
 
     # Define the table labels based on the number of tables
     table_labels = []
-    if num_tables == 4:
-        table_labels = ["Hardpoint", "Search and Destroy", "Control", "Overall"]
-    elif num_tables == 5:
-        table_labels = ["Hardpoint", "Search and Destroy", "Control", "Hardpoint", "Overall"]
-    elif num_tables == 6:
-        table_labels = ["Hardpoint", "Search and Destroy", "Control", "Hardpoint", "Search and Destroy", "Overall"]
+    if num_tables == 6:
+        table_labels = ["Hardpoint", "Search and Destroy","Search and Destroy Info", "Control","Control Info", "Overall"]
+    elif num_tables == 7:
+        table_labels = ["Hardpoint", "Search and Destroy","Search and Destroy Info", "Control","Control Info","Hardpoint", "Overall"]
+    elif num_tables == 10:
+        table_labels = ["Hardpoint", "Search and Destroy","Search and Destroy Info", "Control","Control Info","Hardpoint","Search and Destroy", "Search and Destroy Info" ,"Overall"]
     else:
-        print("Invalid number of tables present")
+        print("Invalid number of tables present. " , "We Found: " , num_tables , " Tables")
+        print(tables)
 
     # Output variable to store the printed data
     output = ""
+    # Define the tables to skip
+    tables_to_skip = {3, 5, 8}
 
     # Iterate over each table
     for i, (table, label) in enumerate(zip(tables, table_labels), start=1):
+        if i in tables_to_skip:
+            continue
         output += f"Table {i} ({label}):\n"
 
         # Find all rows in the table
